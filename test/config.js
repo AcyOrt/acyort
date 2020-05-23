@@ -39,7 +39,7 @@ describe('test config with config.yml', () => {
   afterEach(() => {
     removeSync(join(base, 'config.yml'))
     removeSync(join(base, 'node_modules'))
-    const requireKey = Object.keys(require.cache).find(s => s.includes('npm'))
+    const requireKey = Object.keys(require.cache).find((s) => s.includes('npm'))
     delete require.cache[requireKey]
   })
 
@@ -101,7 +101,7 @@ describe('test config with config.yml', () => {
     )
 
     // delete require cache
-    const requireKey = Object.keys(require.cache).find(s => s.includes('npm'))
+    const requireKey = Object.keys(require.cache).find((s) => s.includes('npm'))
     delete require.cache[requireKey]
 
     expect(() => { config = getConfig(base) })

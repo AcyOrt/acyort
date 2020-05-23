@@ -1,7 +1,7 @@
 const assert = require('power-assert')
 const { resolve, join } = require('path')
 const { existsSync, readFileSync, removeSync } = require('fs-extra')
-const Renderer = require('@acyort/renderer')
+const Renderer = require('../../lib/renderer')
 const outputHTML = require('../../lib/utility/output')
 
 class Helper {

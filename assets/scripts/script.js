@@ -55,7 +55,7 @@ module.exports = (acyort) => {
     return `This is h${key}, not h${number}`
   })
 
-  acyort.hooks.tap('test', ctx => new Promise((resolve) => {
+  acyort.hooks.tap('test', (ctx) => new Promise((resolve) => {
     ctx.a = 2
     setTimeout(() => {
       resolve()

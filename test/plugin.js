@@ -25,7 +25,7 @@ describe('workflow', () => {
     },
     store: new Store(),
     logger: {
-      error: s => global.console.log(s.message),
+      error: (s) => global.console.log(s.message),
     },
   }
 
