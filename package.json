@@ -1,6 +1,6 @@
 {
   "name": "acyort",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "description": "A Node.js static website framework",
   "bin": {
     "acyort": "./bin/acyort.js"
@@ -44,8 +44,6 @@
   },
   "homepage": "https://github.com/acyortjs/acyort",
   "dependencies": {
-    "@acyort/i18n": "^0.2.0",
-    "@acyort/renderer": "^1.1.1",
     "fs-extra": "^7.0.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
