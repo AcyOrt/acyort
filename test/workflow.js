@@ -19,7 +19,7 @@ describe('workflow', () => {
     flow.register(a, b)
 
     expect(() => flow.register(c))
-      .toThrow('Function register error, no a function')
+      .toThrow('Register error, no a function')
 
     assert(flow.scripts.length === 2)
     assert(flow.scripts[0]() === 'a')

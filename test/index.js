@@ -3,7 +3,7 @@
 describe('AcyOrt', () => {
   // require('./plugin')
   // require('./store')
-  // require('./workflow')
+  require('./workflow')
   // require('./helper')
   // require('./config')
   // require('./utility')
@@ -12,5 +12,5 @@ describe('AcyOrt', () => {
   // require('./hooks')
   // require('./markdown')
   // require('./renderer')
-  require('./i18n')
+  // require('./i18n')
 })
