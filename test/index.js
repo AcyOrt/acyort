@@ -3,9 +3,9 @@
 describe('AcyOrt', () => {
   // require('./plugin')
   // require('./store')
-  require('./workflow')
+  // require('./workflow')
   // require('./helper')
-  // require('./config')
+  require('./config')
   // require('./utility')
   // require('./cli')
   // require('./logger')

@@ -2,36 +2,9 @@ const { removeSync, outputFileSync, ensureDirSync } = require('fs-extra')
 const { join, resolve } = require('path')
 const assert = require('power-assert')
 const expect = require('expect')
-const getConfig = require('../lib/config/get')
-const Config = require('../lib/config')
+const getConfig = require('../lib/config')
 
-const config0 = 'url:'
-const config1 = 'url: https://test.com/public'
-const config2 = 'url: test.com'
 const config3 = 'template: npm'
-const config4 = 'url: \'\''
-
-describe('config api', () => {
-  const c = {
-    a: 0,
-    b: '1',
-    base: resolve(__dirname, './fixtures'),
-  }
-
-  const cf = new Config(c)
-
-  it('api test', () => {
-    assert(cf.get('a') === 0)
-    assert(cf.get('b') === '1')
-    assert(cf.get().a === 0)
-
-    cf.set('a', 1)
-    cf.set('c', false)
-
-    assert(cf.get('a') === 1)
-    assert(cf.get('c') === false)
-  })
-})
 
 describe('test config with config.yml', () => {
   const base = join(__dirname, 'fixtures')
@@ -45,30 +18,6 @@ describe('test config with config.yml', () => {
 
   it('test config', () => {
     let config
-
-    outputFileSync(join(base, 'config.yml'), config0)
-    config = getConfig(base)
-
-    assert(config.url === 'https://acyort.js.org')
-    assert(config.root === '/')
-
-    outputFileSync(join(base, 'config.yml'), config1)
-    config = getConfig(base)
-
-    assert(config.url === 'https://test.com')
-    assert(config.root === '/public')
-
-    outputFileSync(join(base, 'config.yml'), config2)
-    config = getConfig(base)
-
-    assert(config.url === 'https://acyort.js.org')
-    assert(config.root === '/')
-
-    outputFileSync(join(base, 'config.yml'), config4)
-    config = getConfig(base)
-
-    assert(config.url === '')
-    assert(config.root === '/')
 
     outputFileSync(join(base, 'config.yml'), config3)
 
@@ -111,14 +60,15 @@ describe('test config with config.yml', () => {
     assert(config === null)
   })
 })
+
 describe('test config width arg', () => {
   let config
+
   it('test default config', () => {
     expect(getConfig).toThrow('Template no exist: ccc45')
   })
+
   it('test custom config', () => {
-    const url = 'http://abc.xyz'
-    const root = 'rootPath'
     const now = Date.now()
     const template = `acyort-template-${now}`
     const npmPath = join(__dirname, '..', 'node_modules', template)
@@ -137,13 +87,10 @@ describe('test config width arg', () => {
     )
     config = getConfig({
       base: '.',
-      url: `${url}/${root}`,
       template,
     })
     removeSync(npmPath)
     assert(config.base === resolve('.'))
-    assert(config.url === url)
-    assert(config.root === `/${root}`)
     assert(config.templatePath === join(npmPath, 'templates', 'ccc45'))
   })
 })
